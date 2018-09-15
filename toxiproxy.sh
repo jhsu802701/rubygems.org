@@ -24,6 +24,10 @@ echo '--------------'
 echo 'bundle install'
 bundle install
 
+echo '--------------------------------------------------'
+echo 'cp config/database.yml.example config/database.yml'
+cp config/database.yml.example config/database.yml
+
 echo '----------------------------------------------------'
 echo "'create database gemcutter_development;' -U postgres"
 psql -c 'create database gemcutter_development;' -U postgres
