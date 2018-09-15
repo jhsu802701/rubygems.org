@@ -24,6 +24,18 @@ echo '--------------'
 echo 'bundle install'
 bundle install
 
+echo '----------------------------------------------------'
+echo "'create database gemcutter_development;' -U postgres"
+psql -c 'create database gemcutter_development;' -U postgres
+
+echo '-----------------------------------------------------'
+echo "psql -c 'create database gemcutter_test;' -U postgres"
+psql -c 'create database gemcutter_test;' -U postgres
+
+echo '----------------'
+echo 'rails db:migrate'
+rails db:migrate
+
 ./script/setup
 
 echo '*****************'
