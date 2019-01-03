@@ -37,6 +37,7 @@ gem 'validates_formatting_of'
 gem 'elasticsearch-model', '~> 5.0.0'
 gem 'elasticsearch-rails', '~> 5.0.0'
 gem 'elasticsearch-dsl', '~> 0.1.2'
+gem 'faraday_middleware-aws-sigv4', '~> 0.2.4'
 gem 'xml-simple'
 gem 'compact_index', '~> 0.11.0'
 gem 'sprockets-rails'
@@ -67,7 +68,6 @@ group :test do
   gem 'launchy'
   gem 'rack-test', require: 'rack/test'
   gem 'mocha', require: false
-  gem 'bourne', require: false
   gem 'shoulda'
 end
 
