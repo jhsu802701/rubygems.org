@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
   before_action :set_csp unless Rails.env.development?
+  before_action :reject_null_char_param
 
   def set_csp
     response.headers['Content-Security-Policy'] = "default-src 'self'; "\
@@ -95,7 +96,7 @@ class ApplicationController < ActionController::Base
 
   def set_page(max_page = Gemcutter::MAX_PAGES)
     @page = Gemcutter::DEFAULT_PAGE && return unless params.key?(:page)
-    redirect_to_page_with_error unless valid_page_param?(max_page)
+    redirect_to_page_with_error && return unless valid_page_param?(max_page)
 
     @page = params[:page].to_i
   end
@@ -127,13 +128,17 @@ class ApplicationController < ActionController::Base
 
   def redirect_to_page_with_error
     flash[:error] = t('invalid_page') unless controller_path.starts_with? "api"
-    page_params = params.except(:controller, :action)
-      .permit(:query, :to, :from, :format)
+    page_params = params.except(:controller, :action, :page)
+      .permit(:query, :to, :from, :format, :letter)
       .merge(page: Gemcutter::DEFAULT_PAGE)
     redirect_to url_for(page_params)
   end
 
   def valid_page_param?(max_page)
     params[:page].respond_to?(:to_i) && params[:page].to_i.between?(Gemcutter::DEFAULT_PAGE, max_page)
+  end
+
+  def reject_null_char_param
+    render plain: "bad request", status: :bad_request if params.values.any? { |v| v.to_s.include?("\u0000") }
   end
 end

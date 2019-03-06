@@ -14,7 +14,6 @@ gem 'delayed_job_active_record'
 gem 'dynamic_form'
 gem 'gravtastic'
 gem 'high_voltage'
-gem 'highline'
 gem 'honeybadger'
 gem 'http_accept_language'
 gem 'jquery-rails'
@@ -28,6 +27,7 @@ gem 'rack-utf8_sanitizer'
 gem 'rbtrace', '~> 0.4.8'
 gem 'rdoc'
 gem 'rest-client', require: 'rest_client'
+gem 'roadie-rails', '~> 1.3.0'
 gem 'sass', require: false
 gem 'shoryuken', '~> 2.1.0', require: false
 gem 'statsd-instrument', '~> 2.3.0'
@@ -72,8 +72,5 @@ group :test do
 end
 
 group :development, :deploy do
-  gem 'capistrano', '~> 3.0', require: false
-  gem 'capistrano-rails', '~> 1.1', require: false
-  gem 'capistrano-bundler', '~> 1.1', require: false
   gem 'kubernetes-deploy', '0.20.6', require: false
 end

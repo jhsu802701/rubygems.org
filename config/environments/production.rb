@@ -52,7 +52,12 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
-  config.ssl_options = { hsts: false }
+  config.ssl_options = {
+    hsts: false,
+    redirect: {
+      exclude: ->(request) { request.path.start_with?('/internal') }
+    }
+  }
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
@@ -75,6 +80,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: Gemcutter::HOST,
                                                protocol: Gemcutter::PROTOCOL }
 
+  config.action_mailer.asset_host = "#{Gemcutter::PROTOCOL}://#{Gemcutter::HOST}"
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = [:en]
