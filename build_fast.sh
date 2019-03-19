@@ -33,6 +33,8 @@ read cont
 # BEGIN: setup up ElasticSearch
 ###############################
 
+echo '-------------------------'
+echo 'Configuring ElasticSearch'
 ES_YML='/etc/elasticsearch/elasticsearch.yml'
 sudo bash -c "echo 'http.host: 0.0.0.0' > $ES_YML"
 sudo bash -c "echo 'transport.host: 127.0.0.1' >> $ES_YML"
