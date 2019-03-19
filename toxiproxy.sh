@@ -2,6 +2,6 @@
 
 script/install_toxiproxy.sh
 
-echo '---------'
-echo 'toxiproxy'
+echo '-----------------'
+echo 'Running Toxiproxy'
 toxiproxy

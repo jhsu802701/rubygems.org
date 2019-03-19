@@ -13,9 +13,11 @@ echo 'set up this project.  Setting up the project so that all tests pass'
 echo 'will be something you can do in minutes instead of hours.'
 echo ''
 echo 'Before you continue, please do the following:'
-echo '1. Start an additional tab in LXTerminal.  Enter the command "sh join.sh".'
+echo '1. Start an additional tab in LXTerminal for Toxiproxy.'
+echo '   Enter the command "sh join.sh".'   
 echo '   After you enter the Docker container, enter the command'
-echo '   "cd rubygems.org; sh travis.sh".'
+echo '   "cd rubygems.org; sh toxiproxy.sh".'
+echo '   In a moment, Toxiproxy will be running.'
 echo '--------------------------------------------------------------'
 echo 'When you have satisfied the above requirements, press ENTER to' 
 echo 'continue.'
@@ -79,7 +81,6 @@ psql -c 'create database rubygems_test;' -U postgres
 #############################
 # FINISHED: set up PostgreSQL
 #############################
-
 
 sh kill_spring.sh
 sh all.sh
