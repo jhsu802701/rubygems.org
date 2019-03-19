@@ -4,9 +4,9 @@ echo '--------------'
 echo 'bundle install'
 bundle install
 
-echo '----------------'
-echo 'rails db:migrate'
-rails db:migrate
+echo '-----------------------------------------------------'
+echo 'bundle exec rake db:create db:migrate db:test:prepare'
+bundle exec rake db:create db:migrate db:test:prepare
 
 # NOTE: The Spring server may distort the test coverage results from MiniTest and SimpleCov.
 echo '---------------------------'
