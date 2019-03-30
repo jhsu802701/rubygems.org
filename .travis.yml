@@ -42,6 +42,7 @@ before_script:
   - bundle exec rake db:create db:migrate db:test:prepare
 
 script:
+  - env
   - bundle exec rails test
   - bundle exec rake rubocop
   - bundle audit check
