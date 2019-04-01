@@ -6,3 +6,11 @@
 echo '-------------------------------'
 echo 'sudo service postgresql restart'
 sudo service postgresql restart
+
+echo '----------------------------------'
+echo 'sudo service elasticsearch restart'
+sudo service elasticsearch restart
+
+echo '------------------------------'
+echo 'sudo service memcached restart'
+sudo service memcached restart
