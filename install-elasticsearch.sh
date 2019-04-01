@@ -11,10 +11,12 @@ echo '-------------------'
 echo 'sudo apt-get update'
 sudo apt-get update
 
-echo '-------------------------------------'
-echo 'sudo apt-get install -y elasticsearch'
-sudo apt-get install -y elasticsearch
+echo '-------------------------------------------'
+echo 'sudo apt-get install -y elasticsearch=5.1.2'
+sudo apt-get install -y elasticsearch=5.1.2
 
-# echo 'http.host: 0.0.0.0' | sudo tee /etc/elasticsearch/elasticsearch.yml
+# echo '---------------------------------------------'
+# echo 'Updating /etc/elasticsearch/elasticsearch.yml'
+# echo 'http.host: 0.0.0.0' | sudo tee -a /etc/elasticsearch/elasticsearch.yml
 # echo 'transport.host: 127.0.0.1' | sudo tee -a /etc/elasticsearch/elasticsearch.yml
 # echo 'xpack.security.enabled: false' | sudo tee -a /etc/elasticsearch/elasticsearch.yml
