@@ -22,3 +22,5 @@ chef
 public/assets
 latest_dump
 coverage
+
+Dockerfile-dev
